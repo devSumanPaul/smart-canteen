@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Canteen — Today's Menu</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🍽️</span>
+      <span class="brand-name">Smart Canteen</span>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+      <div class="admin-badge">
+        <span class="admin-dot"></span>
+        <span>Admin</span>
+      </div>
+      <button class="cart-btn" id="cartBtn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO HEADER -->
+  <header class="hero-header">
+    <div class="hero-content">
+      <div class="daily-label">
+        <span class="star-icon">⭐</span>
+        <span>DAILY MENU</span>
+      </div>
+      <h1 class="hero-title">Today's Menu</h1>
+      <p class="hero-sub">Fresh items prepared daily by our canteen team</p>
+    </div>
+    <div class="hero-glow"></div>
+  </header>
+
+  <!-- SEARCH + FILTER BAR -->
+  <div class="controls-bar">
+    <div class="search-wrapper">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search items..."/>
+      <button class="clear-search" id="clearSearch">✕</button>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">🍴 All</button>
+      <button class="filter-tab" data-filter="snacks">🍟 Snacks</button>
+      <button class="filter-tab" data-filter="drinks">🥤 Drinks</button>
+      <button class="filter-tab" data-filter="meals">🍛 Meals</button>
+    </div>
+  </div>
+
+  <!-- MENU GRID -->
+  <main class="menu-grid" id="menuGrid">
+
+    <!-- SNACKS -->
+    <article class="menu-card" data-category="snacks" data-name="Classic Cheeseburger">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Classic Cheeseburger" class="card-img"/>
+        <span class="card-badge">🔥 Hot</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Classic Cheeseburger',129)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Classic Cheeseburger</h3>
+          <span class="card-tag snacks">Snacks</span>
+        </div>
+        <p class="card-desc">Juicy beef patty with melted cheddar, lettuce & special sauce</p>
+        <div class="card-footer">
+          <span class="card-price">₹129</span>
+          <button class="add-btn" onclick="addToCart(this,'Classic Cheeseburger',129)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="snacks" data-name="Double Smash Burger">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&q=80" alt="Double Smash Burger" class="card-img"/>
+        <span class="card-badge popular">⭐ Popular</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Double Smash Burger',179)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Double Smash Burger</h3>
+          <span class="card-tag snacks">Snacks</span>
+        </div>
+        <p class="card-desc">Two smashed patties, pickles, onions & signature smash sauce</p>
+        <div class="card-footer">
+          <span class="card-price">₹179</span>
+          <button class="add-btn" onclick="addToCart(this,'Double Smash Burger',179)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="snacks" data-name="Crispy Chicken Burger">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=400&q=80" alt="Crispy Chicken Burger" class="card-img"/>
+        <span class="card-badge new">✨ New</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Crispy Chicken Burger',149)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Crispy Chicken Burger</h3>
+          <span class="card-tag snacks">Snacks</span>
+        </div>
+        <p class="card-desc">Crispy fried chicken, coleslaw & honey mustard on brioche bun</p>
+        <div class="card-footer">
+          <span class="card-price">₹149</span>
+          <button class="add-btn" onclick="addToCart(this,'Crispy Chicken Burger',149)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="snacks" data-name="Loaded Fries">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80" alt="Loaded Fries" class="card-img"/>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Loaded Fries',89)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Loaded Fries</h3>
+          <span class="card-tag snacks">Snacks</span>
+        </div>
+        <p class="card-desc">Golden crispy fries topped with cheese sauce, jalapeños & bacon bits</p>
+        <div class="card-footer">
+          <span class="card-price">₹89</span>
+          <button class="add-btn" onclick="addToCart(this,'Loaded Fries',89)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- DRINKS -->
+    <article class="menu-card" data-category="drinks" data-name="Mango Smoothie">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&q=80" alt="Mango Smoothie" class="card-img"/>
+        <span class="card-badge popular">⭐ Popular</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Mango Smoothie',69)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Mango Smoothie</h3>
+          <span class="card-tag drinks">Drinks</span>
+        </div>
+        <p class="card-desc">Fresh Alphonso mangoes blended with yogurt and a hint of cardamom</p>
+        <div class="card-footer">
+          <span class="card-price">₹69</span>
+          <button class="add-btn" onclick="addToCart(this,'Mango Smoothie',69)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="drinks" data-name="Cold Coffee">
+      <div class="card-image-wrap">
+        <img src="coldcoffee.jpg" alt="Cold Coffee" class="card-img"/>
+        <span class="card-badge">🔥 Hot</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Cold Coffee',59)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Cold Coffee</h3>
+          <span class="card-tag drinks">Drinks</span>
+        </div>
+        <p class="card-desc">Rich espresso with chilled milk, vanilla & whipped cream topping</p>
+        <div class="card-footer">
+          <span class="card-price">₹59</span>
+          <button class="add-btn" onclick="addToCart(this,'Cold Coffee',59)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="drinks" data-name="Lemon Mint Cooler">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80" alt="Lemon Mint Cooler" class="card-img"/>
+        <span class="card-badge new">✨ New</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Lemon Mint Cooler',49)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Lemon Mint Cooler</h3>
+          <span class="card-tag drinks">Drinks</span>
+        </div>
+        <p class="card-desc">Zesty lemon with fresh mint, soda & a pinch of black salt</p>
+        <div class="card-footer">
+          <span class="card-price">₹49</span>
+          <button class="add-btn" onclick="addToCart(this,'Lemon Mint Cooler',49)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- MEALS -->
+    <article class="menu-card" data-category="meals" data-name="Paneer Butter Masala">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&q=80" alt="Paneer Butter Masala" class="card-img"/>
+        <span class="card-badge popular">⭐ Popular</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Paneer Butter Masala',159)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Paneer Butter Masala</h3>
+          <span class="card-tag meals">Meals</span>
+        </div>
+        <p class="card-desc">Soft paneer cubes in rich tomato-butter gravy, served with roti</p>
+        <div class="card-footer">
+          <span class="card-price">₹159</span>
+          <button class="add-btn" onclick="addToCart(this,'Paneer Butter Masala',159)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="meals" data-name="Veg Fried Rice">
+      <div class="card-image-wrap">
+        <img src="vegfriedrice.jpg" alt="Veg Fried Rice" class="card-img"/>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Veg Fried Rice',99)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Veg Fried Rice</h3>
+          <span class="card-tag meals">Meals</span>
+        </div>
+        <p class="card-desc">Wok-tossed basmati rice with seasonal veggies, soy & sesame</p>
+        <div class="card-footer">
+          <span class="card-price">₹99</span>
+          <button class="add-btn" onclick="addToCart(this,'Veg Fried Rice',99)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="meals" data-name="Chicken Biryani">
+      <div class="card-image-wrap">
+        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&q=80" alt="Chicken Biryani" class="card-img"/>
+        <span class="card-badge">🔥 Hot</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Chicken Biryani',199)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Chicken Biryani</h3>
+          <span class="card-tag meals">Meals</span>
+        </div>
+        <p class="card-desc">Aromatic basmati rice with tender chicken, saffron & fried onions</p>
+        <div class="card-footer">
+          <span class="card-price">₹199</span>
+          <button class="add-btn" onclick="addToCart(this,'Chicken Biryani',199)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="menu-card" data-category="snacks" data-name="Hot Dog Combo">
+      <div class="card-image-wrap">
+        <img src="hotdogcombo.jpg" alt="Hot Dog Combo" class="card-img"/>
+        <span class="card-badge new">✨ New</span>
+        <div class="card-overlay">
+          <button class="quick-add" onclick="addToCart(this,'Hot Dog Combo',119)">+ Add</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <h3 class="card-title">Hot Dog Combo</h3>
+          <span class="card-tag snacks">Snacks</span>
+        </div>
+        <p class="card-desc">Juicy frankfurter in a soft bun with ketchup, mustard & onions</p>
+        <div class="card-footer">
+          <span class="card-price">₹119</span>
+          <button class="add-btn" onclick="addToCart(this,'Hot Dog Combo',119)">Add to Cart</button>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <div class="empty-icon">🔍</div>
+    <h3>No items found</h3>
+    <p>Try a different search or category</p>
+  </div>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Order</h2>
+      <button class="close-cart" id="closeCart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty-state">
+        <span>🛒</span>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">Place Order 🚀</button>
+    </div>
+  </aside>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
